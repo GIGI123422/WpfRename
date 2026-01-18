@@ -6,8 +6,9 @@
                  xmlns:local="clr-namespace:WpfRename"
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                  xmlns:converters="clr-namespace:WpfRename.Converters"
+                 xmlns:res="clr-namespace:WpfRename.Resources"
                  mc:Ignorable="d"
-                 Title="WpfRename"
+                 Title="{x:Static res:Strings.AppTitle}"
                  Height="700"
                  Width="1000"
                  MinHeight="500"
@@ -22,6 +23,8 @@
 
     <Grid Margin="16">
         <Grid.RowDefinitions>
+            <!-- 메뉴 -->
+            <RowDefinition Height="Auto" />
             <!-- 검색/치환 입력 영역 -->
             <RowDefinition Height="Auto" />
             <!-- 옵션 체크박스 영역 -->
@@ -36,8 +39,21 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <!-- Menu -->
+        <Menu Grid.Row="0"
+              Margin="0,0,0,8">
+            <MenuItem Header="Help">
+                <MenuItem Header="{x:Static res:Strings.AboutTitle}"
+                          Click="OnAboutClick">
+                    <MenuItem.Icon>
+                        <ui:SymbolIcon Symbol="Info24" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
         <!-- 프리셋 및 검색/치환 입력 영역 -->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="8" />
@@ -56,7 +72,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0"
-                           Text="프리셋:"
+                           Text="{x:Static res:Strings.PresetLabel}"
                            VerticalAlignment="Center"
                            Margin="0,0,8,0" />
 
@@ -72,14 +88,14 @@
                 </ComboBox>
 
                 <ui:Button Grid.Column="3"
-                           Content="저장"
+                           Content="{x:Static res:Strings.SavePresetButton}"
                            Icon="{ui:SymbolIcon Save24}"
                            Appearance="Secondary"
                            Margin="0,0,8,0"
                            Click="OnSavePresetClick" />
 
                 <ui:Button Grid.Column="4"
-                           Content="삭제"
+                           Content="{x:Static res:Strings.DeletePresetButton}"
                            Icon="{ui:SymbolIcon Delete24}"
                            Appearance="Secondary"
                            Command="{Binding DeletePresetCommand}"
@@ -97,22 +113,22 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0"
-                           Text="검색:"
+                           Text="{x:Static res:Strings.SearchLabel}"
                            VerticalAlignment="Center"
                            Margin="0,0,8,0" />
 
                 <ui:TextBox Grid.Column="1"
-                            PlaceholderText="검색할 텍스트 입력"
+                            PlaceholderText="{x:Static res:Strings.SearchPlaceholder}"
                             ClearButtonEnabled="True"
                             Text="{Binding SearchPattern, UpdateSourceTrigger=PropertyChanged}" />
 
                 <TextBlock Grid.Column="3"
-                           Text="치환:"
+                           Text="{x:Static res:Strings.ReplaceLabel}"
                            VerticalAlignment="Center"
                            Margin="0,0,8,0" />
 
                 <ui:TextBox Grid.Column="4"
-                            PlaceholderText="치환할 텍스트 입력"
+                            PlaceholderText="{x:Static res:Strings.ReplacePlaceholder}"
                             ClearButtonEnabled="True"
                             Text="{Binding ReplacePattern, UpdateSourceTrigger=PropertyChanged}">
                     <ui:TextBox.ToolTip>
@@ -149,7 +165,7 @@
         </Grid>
 
         <!-- 옵션 체크박스 영역 -->
-        <Grid Grid.Row="1"
+        <Grid Grid.Row="2"
               Margin="0,12,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -158,19 +174,19 @@
 
             <StackPanel Grid.Row="0"
                         Orientation="Horizontal">
-                <CheckBox Content="정규식 사용"
+                <CheckBox Content="{x:Static res:Strings.UseRegexCheckBox}"
                           Margin="0,0,16,0"
                           IsChecked="{Binding UseRegex}" />
-                <CheckBox Content="대소문자 구분"
+                <CheckBox Content="{x:Static res:Strings.CaseSensitiveCheckBox}"
                           Margin="0,0,16,0"
                           IsChecked="{Binding CaseSensitive}" />
                 <ComboBox Width="150"
                           Margin="0,0,16,0"
                           SelectedIndex="{Binding CaseTransformIndex}">
-                    <ComboBoxItem Content="변환 안 함" />
-                    <ComboBoxItem Content="모두 소문자" />
-                    <ComboBoxItem Content="모두 대문자" />
-                    <ComboBoxItem Content="Title Case" />
+                    <ComboBoxItem Content="{x:Static res:Strings.CaseNone}" />
+                    <ComboBoxItem Content="{x:Static res:Strings.CaseLower}" />
+                    <ComboBoxItem Content="{x:Static res:Strings.CaseUpper}" />
+                    <ComboBoxItem Content="{x:Static res:Strings.CaseTitle}" />
                 </ComboBox>
             </StackPanel>
 
@@ -184,7 +200,7 @@
         </Grid>
 
         <!-- 파일 목록 DataGrid -->
-        <Border Grid.Row="3"
+        <Border Grid.Row="4"
                 BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="8"
@@ -201,18 +217,18 @@
                       BorderThickness="0"
                       ItemsSource="{Binding Items}">
                 <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Header="선택"
+                    <DataGridCheckBoxColumn Header="☑"
                                             Width="60"
                                             Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
-                    <DataGridTextColumn Header="원본 파일명"
+                    <DataGridTextColumn Header="{x:Static res:Strings.ColumnOriginalName}"
                                         Width="2*"
                                         Binding="{Binding OriginalName}"
                                         IsReadOnly="True" />
-                    <DataGridTextColumn Header="변경 후 파일명"
+                    <DataGridTextColumn Header="{x:Static res:Strings.ColumnNewName}"
                                         Width="2*"
                                         Binding="{Binding NewName}"
                                         IsReadOnly="True" />
-                    <DataGridTextColumn Header="경로"
+                    <DataGridTextColumn Header="📁"
                                         Width="3*"
                                         Binding="{Binding OriginalPath}"
                                         IsReadOnly="True" />
@@ -221,7 +237,7 @@
         </Border>
 
         <!-- 상태바 및 버튼 -->
-        <Grid Grid.Row="5">
+        <Grid Grid.Row="6">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -289,16 +305,16 @@
                 <!-- 버튼 영역 -->
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal">
-                    <ui:Button Content="실행 취소"
+                    <ui:Button Content="{x:Static res:Strings.UndoButton}"
                                Margin="0,0,8,0"
                                Appearance="Secondary"
                                Icon="{ui:SymbolIcon ArrowUndo24}"
                                Command="{Binding UndoCommand}" />
-                    <ui:Button Content="전체 지우기"
+                    <ui:Button Content="{x:Static res:Strings.ClearButton}"
                                Margin="0,0,8,0"
                                Appearance="Secondary"
                                Command="{Binding ClearItemsCommand}" />
-                    <ui:Button Content="이름 변경"
+                    <ui:Button Content="{x:Static res:Strings.RenameButton}"
                                Appearance="Primary"
                                Icon="{ui:SymbolIcon DocumentEdit24}"
                                Command="{Binding RenameCommand}" />

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>WpfRename - File Batch Renaming Tool</value>
+  </data>
+
+  <!-- Preset Section -->
+  <data name="PresetLabel" xml:space="preserve">
+    <value>Preset:</value>
+  </data>
+  <data name="SavePresetButton" xml:space="preserve">
+    <value>Save Preset</value>
+  </data>
+  <data name="DeletePresetButton" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+
+  <!-- Search Section -->
+  <data name="SearchLabel" xml:space="preserve">
+    <value>Search:</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Text to search</value>
+  </data>
+
+  <!-- Replace Section -->
+  <data name="ReplaceLabel" xml:space="preserve">
+    <value>Replace:</value>
+  </data>
+  <data name="ReplacePlaceholder" xml:space="preserve">
+    <value>Text to replace with</value>
+  </data>
+  <data name="ReplaceTooltip" xml:space="preserve">
+    <value>Available variables:&#xA;${count} - Enumeration (options: start, step, digits)&#xA;${now} - Current date/time (format: yyyy-MM-dd)&#xA;${created} - File creation date&#xA;${modified} - File modification date&#xA;&#xA;Example: IMG_${count:start=1,digits=3} → IMG_001, IMG_002...</value>
+  </data>
+
+  <!-- Options Section -->
+  <data name="OptionsLabel" xml:space="preserve">
+    <value>Options:</value>
+  </data>
+  <data name="UseRegexCheckBox" xml:space="preserve">
+    <value>Use Regular Expression</value>
+  </data>
+  <data name="CaseSensitiveCheckBox" xml:space="preserve">
+    <value>Case Sensitive</value>
+  </data>
+  <data name="CaseTransformLabel" xml:space="preserve">
+    <value>Case Transform:</value>
+  </data>
+  <data name="CaseNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="CaseUpper" xml:space="preserve">
+    <value>Uppercase</value>
+  </data>
+  <data name="CaseLower" xml:space="preserve">
+    <value>Lowercase</value>
+  </data>
+  <data name="CaseTitle" xml:space="preserve">
+    <value>Title Case</value>
+  </data>
+
+  <!-- File List Section -->
+  <data name="FileListLabel" xml:space="preserve">
+    <value>File List (Drag &amp; Drop files or folders here):</value>
+  </data>
+  <data name="ColumnOriginalName" xml:space="preserve">
+    <value>Original Name</value>
+  </data>
+  <data name="ColumnNewName" xml:space="preserve">
+    <value>New Name</value>
+  </data>
+
+  <!-- Status Bar -->
+  <data name="StatusReady" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="StatusItemsSelected" xml:space="preserve">
+    <value>{0} items selected</value>
+  </data>
+  <data name="StatusRenamed" xml:space="preserve">
+    <value>{0} items renamed</value>
+  </data>
+
+  <!-- Buttons -->
+  <data name="RenameButton" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="UndoButton" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="ClearButton" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+
+  <!-- Dialogs -->
+  <data name="SavePresetDialogTitle" xml:space="preserve">
+    <value>Save Preset</value>
+  </data>
+  <data name="SavePresetDialogMessage" xml:space="preserve">
+    <value>Enter preset name:</value>
+  </data>
+  <data name="SavePresetDialogPlaceholder" xml:space="preserve">
+    <value>Enter preset name</value>
+  </data>
+  <data name="DialogSaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DialogCancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorFileNotFound" xml:space="preserve">
+    <value>File not found: {0}</value>
+  </data>
+  <data name="ErrorDirectoryNotFound" xml:space="preserve">
+    <value>Directory not found: {0}</value>
+  </data>
+  <data name="ErrorAccessDenied" xml:space="preserve">
+    <value>Access denied: {0}</value>
+  </data>
+  <data name="ErrorRenameOperation" xml:space="preserve">
+    <value>Rename operation failed: {0}</value>
+  </data>
+  <data name="ErrorInvalidRegex" xml:space="preserve">
+    <value>Invalid regular expression pattern</value>
+  </data>
+
+  <!-- About Dialog -->
+  <data name="AboutTitle" xml:space="preserve">
+    <value>About WpfRename</value>
+  </data>
+  <data name="AboutVersion" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
+  <data name="AboutDescription" xml:space="preserve">
+    <value>WPF reimplementation of PowerToys PowerRename&#xA;Modern file batch renaming tool</value>
+  </data>
+  <data name="AboutCopyright" xml:space="preserve">
+    <value>© 2026 WpfRename Project</value>
+  </data>
+  <data name="AboutLicense" xml:space="preserve">
+    <value>MIT License</value>
+  </data>
+  <data name="AboutGitHub" xml:space="preserve">
+    <value>GitHub Repository</value>
+  </data>
+</root>

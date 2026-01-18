@@ -10,6 +10,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using WpfRename.ViewModels;
+using WpfRename.Resources;
+using WpfRename.Views;
 
 namespace WpfRename;
 
@@ -63,14 +65,14 @@ public partial class MainWindow : Wpf.Ui.Controls.FluentWindow
     {
         var dialog = new Wpf.Ui.Controls.ContentDialog
         {
-            Title = "프리셋 저장",
-            PrimaryButtonText = "저장",
-            CloseButtonText = "취소"
+            Title = Strings.SavePresetDialogTitle,
+            PrimaryButtonText = Strings.DialogSaveButton,
+            CloseButtonText = Strings.DialogCancelButton
         };
 
         var textBox = new Wpf.Ui.Controls.TextBox
         {
-            PlaceholderText = "프리셋 이름 입력",
+            PlaceholderText = Strings.SavePresetDialogPlaceholder,
             Margin = new Thickness(0, 8, 0, 0)
         };
 
@@ -78,7 +80,7 @@ public partial class MainWindow : Wpf.Ui.Controls.FluentWindow
         {
             Children =
             {
-                new TextBlock { Text = "프리셋 이름을 입력하세요:" },
+                new TextBlock { Text = Strings.SavePresetDialogMessage },
                 textBox
             }
         };
@@ -89,5 +91,14 @@ public partial class MainWindow : Wpf.Ui.Controls.FluentWindow
         {
             await ViewModel.SavePresetCommand.ExecuteAsync(textBox.Text);
         }
+    }
+
+    /// <summary>
+    /// About 메뉴 클릭
+    /// </summary>
+    private async void OnAboutClick(object sender, RoutedEventArgs e)
+    {
+        var dialog = new AboutDialog();
+        await dialog.ShowAsync();
     }
 }

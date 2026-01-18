@@ -1,0 +1,83 @@
+<ui:ContentDialog x:Class="WpfRename.Views.AboutDialog"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                  xmlns:res="clr-namespace:WpfRename.Resources"
+                  Title="{x:Static res:Strings.AboutTitle}"
+                  CloseButtonText="{x:Static res:Strings.DialogCancelButton}"
+                  MaxWidth="450">
+
+    <StackPanel Margin="16">
+        <!-- App Icon & Title -->
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,0,0,16"
+                    HorizontalAlignment="Center">
+            <ui:SymbolIcon Symbol="DocumentEdit24"
+                           FontSize="48"
+                           Margin="0,0,12,0" />
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="WpfRename"
+                           FontSize="24"
+                           FontWeight="Bold" />
+                <TextBlock Text="{Binding VersionText}"
+                           FontSize="12"
+                           Opacity="0.7" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Description -->
+        <TextBlock Text="{x:Static res:Strings.AboutDescription}"
+                   TextWrapping="Wrap"
+                   TextAlignment="Center"
+                   Margin="0,0,0,16" />
+
+        <Separator Margin="0,8,0,16" />
+
+        <!-- Copyright -->
+        <TextBlock Text="{x:Static res:Strings.AboutCopyright}"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,8"
+                   Opacity="0.7" />
+
+        <!-- License -->
+        <TextBlock Text="{x:Static res:Strings.AboutLicense}"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,16"
+                   Opacity="0.7" />
+
+        <!-- GitHub Link -->
+        <ui:HyperlinkButton Content="{x:Static res:Strings.AboutGitHub}"
+                            NavigateUri="https://github.com/YOUR_USERNAME/WpfRename"
+                            HorizontalAlignment="Center"
+                            Icon="{ui:SymbolIcon Code24}" />
+
+        <!-- Tech Stack -->
+        <Separator Margin="0,16,0,16" />
+
+        <TextBlock Text="Built with:"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,8" />
+
+        <StackPanel>
+            <TextBlock Opacity="0.7"
+                       Margin="0,0,0,4">
+                <Run Text="• .NET 10" />
+            </TextBlock>
+            <TextBlock Opacity="0.7"
+                       Margin="0,0,0,4">
+                <Run Text="• WPF + " />
+                <Hyperlink NavigateUri="https://github.com/lepoco/wpfui"
+                           RequestNavigate="OnHyperlinkNavigate">
+                    <Run Text="lepoco/wpfui" />
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock Opacity="0.7">
+                <Run Text="• " />
+                <Hyperlink NavigateUri="https://github.com/CommunityToolkit/dotnet"
+                           RequestNavigate="OnHyperlinkNavigate">
+                    <Run Text="CommunityToolkit.Mvvm" />
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </StackPanel>
+</ui:ContentDialog>
