@@ -114,7 +114,37 @@
                 <ui:TextBox Grid.Column="4"
                             PlaceholderText="치환할 텍스트 입력"
                             ClearButtonEnabled="True"
-                            Text="{Binding ReplacePattern, UpdateSourceTrigger=PropertyChanged}" />
+                            Text="{Binding ReplacePattern, UpdateSourceTrigger=PropertyChanged}">
+                    <ui:TextBox.ToolTip>
+                        <ToolTip>
+                            <StackPanel MaxWidth="400">
+                                <TextBlock FontWeight="Bold" Margin="0,0,0,8">사용 가능한 변수:</TextBlock>
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4">
+                                    <Run FontWeight="SemiBold">열거형:</Run>
+                                    <LineBreak />
+                                    • ${count} - 순번 (001, 002, ...)
+                                    <LineBreak />
+                                    • ${count:start=10} - 시작 번호 지정
+                                    <LineBreak />
+                                    • ${count:step=5} - 증가값 지정
+                                    <LineBreak />
+                                    • ${count:digits=4} - 자릿수 지정
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap">
+                                    <Run FontWeight="SemiBold">날짜/시간:</Run>
+                                    <LineBreak />
+                                    • ${now} - 현재 날짜/시간
+                                    <LineBreak />
+                                    • ${now:yyyy-MM-dd} - 형식 지정
+                                    <LineBreak />
+                                    • ${created} - 파일 생성일
+                                    <LineBreak />
+                                    • ${modified} - 파일 수정일
+                                </TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </ui:TextBox.ToolTip>
+                </ui:TextBox>
             </Grid>
         </Grid>
 

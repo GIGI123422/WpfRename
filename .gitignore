@@ -92,3 +92,6 @@ $RECYCLE.BIN/
 
 # Application-specific
 src/WpfRename/presets.json
+
+# 커밋 메시지 히스토리 제외
+docs/commit_messages/

@@ -15,17 +15,19 @@ public partial class MainViewModel : ObservableObject
     private readonly IRenameService _renameService;
     private readonly IFileSystemService _fileSystemService;
     private readonly IPresetService _presetService;
+    private readonly IVariableService _variableService;
     private readonly List<RenameOperation> _lastOperations = [];
 
-    public MainViewModel() : this(new RenameService(), new FileSystemService(), new PresetService())
+    public MainViewModel() : this(new RenameService(), new FileSystemService(), new PresetService(), new VariableService())
     {
     }
 
-    public MainViewModel(IRenameService renameService, IFileSystemService fileSystemService, IPresetService presetService)
+    public MainViewModel(IRenameService renameService, IFileSystemService fileSystemService, IPresetService presetService, IVariableService variableService)
     {
         _renameService = renameService;
         _fileSystemService = fileSystemService;
         _presetService = presetService;
+        _variableService = variableService;
 
         // 프리셋 로드
         _ = LoadPresetsAsync();
@@ -283,8 +285,10 @@ public partial class MainViewModel : ObservableObject
         else
         {
             // RenameService를 사용한 변환
-            foreach (var item in Items)
+            for (int i = 0; i < Items.Count; i++)
             {
+                var item = Items[i];
+
                 var transformed = _renameService.Transform(
                     item.OriginalName,
                     SearchPattern,
@@ -293,13 +297,17 @@ public partial class MainViewModel : ObservableObject
                     CaseSensitive);
 
                 // 대소문자 변환 적용
-                var newName = CaseTransformIndex switch
+                transformed = CaseTransformIndex switch
                 {
                     1 => transformed.ToLower(),
                     2 => transformed.ToUpper(),
                     3 => System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(transformed.ToLower()),
                     _ => transformed
                 };
+
+                // 변수 처리 (열거형, 날짜 등)
+                var filePath = Path.Combine(item.OriginalPath, item.OriginalName);
+                var newName = _variableService.ProcessVariables(transformed, i, filePath);
 
                 item.NewName = newName;
             }
