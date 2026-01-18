@@ -22,7 +22,7 @@ namespace WpfRename.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    public class Strings {
 
         private static global::System.Resources.ResourceManager resourceMan;
 
@@ -36,7 +36,7 @@ namespace WpfRename.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfRename.Resources.Strings", typeof(Strings).Assembly);
@@ -51,7 +51,7 @@ namespace WpfRename.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to About WpfRename.
         /// </summary>
-        internal static string AboutTitle {
+        public static string AboutTitle {
             get {
                 return ResourceManager.GetString("AboutTitle", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to © 2026 WpfRename Project.
         /// </summary>
-        internal static string AboutCopyright {
+        public static string AboutCopyright {
             get {
                 return ResourceManager.GetString("AboutCopyright", resourceCulture);
             }
@@ -82,7 +82,7 @@ namespace WpfRename.Resources {
         ///   Looks up a localized string similar to WPF reimplementation of PowerToys PowerRename
         ///Modern file batch renaming tool.
         /// </summary>
-        internal static string AboutDescription {
+        public static string AboutDescription {
             get {
                 return ResourceManager.GetString("AboutDescription", resourceCulture);
             }
@@ -91,7 +91,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to GitHub Repository.
         /// </summary>
-        internal static string AboutGitHub {
+        public static string AboutGitHub {
             get {
                 return ResourceManager.GetString("AboutGitHub", resourceCulture);
             }
@@ -100,7 +100,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to MIT License.
         /// </summary>
-        internal static string AboutLicense {
+        public static string AboutLicense {
             get {
                 return ResourceManager.GetString("AboutLicense", resourceCulture);
             }
@@ -109,7 +109,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Version {0}.
         /// </summary>
-        internal static string AboutVersion {
+        public static string AboutVersion {
             get {
                 return ResourceManager.GetString("AboutVersion", resourceCulture);
             }
@@ -118,7 +118,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to WpfRename - File Batch Renaming Tool.
         /// </summary>
-        internal static string AppTitle {
+        public static string AppTitle {
             get {
                 return ResourceManager.GetString("AppTitle", resourceCulture);
             }
@@ -127,7 +127,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Lowercase.
         /// </summary>
-        internal static string CaseLower {
+        public static string CaseLower {
             get {
                 return ResourceManager.GetString("CaseLower", resourceCulture);
             }
@@ -136,7 +136,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to None.
         /// </summary>
-        internal static string CaseNone {
+        public static string CaseNone {
             get {
                 return ResourceManager.GetString("CaseNone", resourceCulture);
             }
@@ -145,7 +145,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Case Sensitive.
         /// </summary>
-        internal static string CaseSensitiveCheckBox {
+        public static string CaseSensitiveCheckBox {
             get {
                 return ResourceManager.GetString("CaseSensitiveCheckBox", resourceCulture);
             }
@@ -154,7 +154,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Title Case.
         /// </summary>
-        internal static string CaseTitle {
+        public static string CaseTitle {
             get {
                 return ResourceManager.GetString("CaseTitle", resourceCulture);
             }
@@ -163,7 +163,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Case Transform:.
         /// </summary>
-        internal static string CaseTransformLabel {
+        public static string CaseTransformLabel {
             get {
                 return ResourceManager.GetString("CaseTransformLabel", resourceCulture);
             }
@@ -172,7 +172,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Uppercase.
         /// </summary>
-        internal static string CaseUpper {
+        public static string CaseUpper {
             get {
                 return ResourceManager.GetString("CaseUpper", resourceCulture);
             }
@@ -181,7 +181,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Clear.
         /// </summary>
-        internal static string ClearButton {
+        public static string ClearButton {
             get {
                 return ResourceManager.GetString("ClearButton", resourceCulture);
             }
@@ -190,7 +190,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to New Name.
         /// </summary>
-        internal static string ColumnNewName {
+        public static string ColumnNewName {
             get {
                 return ResourceManager.GetString("ColumnNewName", resourceCulture);
             }
@@ -199,7 +199,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Original Name.
         /// </summary>
-        internal static string ColumnOriginalName {
+        public static string ColumnOriginalName {
             get {
                 return ResourceManager.GetString("ColumnOriginalName", resourceCulture);
             }
@@ -208,7 +208,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
-        internal static string DeletePresetButton {
+        public static string DeletePresetButton {
             get {
                 return ResourceManager.GetString("DeletePresetButton", resourceCulture);
             }
@@ -217,7 +217,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string DialogCancelButton {
+        public static string DialogCancelButton {
             get {
                 return ResourceManager.GetString("DialogCancelButton", resourceCulture);
             }
@@ -226,7 +226,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
-        internal static string DialogSaveButton {
+        public static string DialogSaveButton {
             get {
                 return ResourceManager.GetString("DialogSaveButton", resourceCulture);
             }
@@ -235,7 +235,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Access denied: {0}.
         /// </summary>
-        internal static string ErrorAccessDenied {
+        public static string ErrorAccessDenied {
             get {
                 return ResourceManager.GetString("ErrorAccessDenied", resourceCulture);
             }
@@ -244,7 +244,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Directory not found: {0}.
         /// </summary>
-        internal static string ErrorDirectoryNotFound {
+        public static string ErrorDirectoryNotFound {
             get {
                 return ResourceManager.GetString("ErrorDirectoryNotFound", resourceCulture);
             }
@@ -253,7 +253,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to File not found: {0}.
         /// </summary>
-        internal static string ErrorFileNotFound {
+        public static string ErrorFileNotFound {
             get {
                 return ResourceManager.GetString("ErrorFileNotFound", resourceCulture);
             }
@@ -262,7 +262,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invalid regular expression pattern.
         /// </summary>
-        internal static string ErrorInvalidRegex {
+        public static string ErrorInvalidRegex {
             get {
                 return ResourceManager.GetString("ErrorInvalidRegex", resourceCulture);
             }
@@ -271,7 +271,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Rename operation failed: {0}.
         /// </summary>
-        internal static string ErrorRenameOperation {
+        public static string ErrorRenameOperation {
             get {
                 return ResourceManager.GetString("ErrorRenameOperation", resourceCulture);
             }
@@ -280,7 +280,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
-        internal static string ErrorTitle {
+        public static string ErrorTitle {
             get {
                 return ResourceManager.GetString("ErrorTitle", resourceCulture);
             }
@@ -289,7 +289,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to File List (Drag &amp; Drop files or folders here):.
         /// </summary>
-        internal static string FileListLabel {
+        public static string FileListLabel {
             get {
                 return ResourceManager.GetString("FileListLabel", resourceCulture);
             }
@@ -298,7 +298,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Options:.
         /// </summary>
-        internal static string OptionsLabel {
+        public static string OptionsLabel {
             get {
                 return ResourceManager.GetString("OptionsLabel", resourceCulture);
             }
@@ -307,7 +307,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Preset:.
         /// </summary>
-        internal static string PresetLabel {
+        public static string PresetLabel {
             get {
                 return ResourceManager.GetString("PresetLabel", resourceCulture);
             }
@@ -316,7 +316,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Rename.
         /// </summary>
-        internal static string RenameButton {
+        public static string RenameButton {
             get {
                 return ResourceManager.GetString("RenameButton", resourceCulture);
             }
@@ -325,7 +325,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Replace:.
         /// </summary>
-        internal static string ReplaceLabel {
+        public static string ReplaceLabel {
             get {
                 return ResourceManager.GetString("ReplaceLabel", resourceCulture);
             }
@@ -334,7 +334,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Text to replace with.
         /// </summary>
-        internal static string ReplacePlaceholder {
+        public static string ReplacePlaceholder {
             get {
                 return ResourceManager.GetString("ReplacePlaceholder", resourceCulture);
             }
@@ -349,7 +349,7 @@ namespace WpfRename.Resources {
         ///
         ///Example: IMG_${count:start=1,digits=3} → IMG_001, IMG_002....
         /// </summary>
-        internal static string ReplaceTooltip {
+        public static string ReplaceTooltip {
             get {
                 return ResourceManager.GetString("ReplaceTooltip", resourceCulture);
             }
@@ -358,7 +358,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Save Preset.
         /// </summary>
-        internal static string SavePresetButton {
+        public static string SavePresetButton {
             get {
                 return ResourceManager.GetString("SavePresetButton", resourceCulture);
             }
@@ -367,7 +367,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Enter preset name:.
         /// </summary>
-        internal static string SavePresetDialogMessage {
+        public static string SavePresetDialogMessage {
             get {
                 return ResourceManager.GetString("SavePresetDialogMessage", resourceCulture);
             }
@@ -376,7 +376,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Enter preset name.
         /// </summary>
-        internal static string SavePresetDialogPlaceholder {
+        public static string SavePresetDialogPlaceholder {
             get {
                 return ResourceManager.GetString("SavePresetDialogPlaceholder", resourceCulture);
             }
@@ -385,7 +385,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Save Preset.
         /// </summary>
-        internal static string SavePresetDialogTitle {
+        public static string SavePresetDialogTitle {
             get {
                 return ResourceManager.GetString("SavePresetDialogTitle", resourceCulture);
             }
@@ -394,7 +394,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Search:.
         /// </summary>
-        internal static string SearchLabel {
+        public static string SearchLabel {
             get {
                 return ResourceManager.GetString("SearchLabel", resourceCulture);
             }
@@ -403,7 +403,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Text to search.
         /// </summary>
-        internal static string SearchPlaceholder {
+        public static string SearchPlaceholder {
             get {
                 return ResourceManager.GetString("SearchPlaceholder", resourceCulture);
             }
@@ -412,7 +412,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} items renamed.
         /// </summary>
-        internal static string StatusRenamed {
+        public static string StatusRenamed {
             get {
                 return ResourceManager.GetString("StatusRenamed", resourceCulture);
             }
@@ -421,7 +421,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Ready.
         /// </summary>
-        internal static string StatusReady {
+        public static string StatusReady {
             get {
                 return ResourceManager.GetString("StatusReady", resourceCulture);
             }
@@ -430,7 +430,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} items selected.
         /// </summary>
-        internal static string StatusItemsSelected {
+        public static string StatusItemsSelected {
             get {
                 return ResourceManager.GetString("StatusItemsSelected", resourceCulture);
             }
@@ -439,7 +439,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Undo.
         /// </summary>
-        internal static string UndoButton {
+        public static string UndoButton {
             get {
                 return ResourceManager.GetString("UndoButton", resourceCulture);
             }
@@ -448,7 +448,7 @@ namespace WpfRename.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Use Regular Expression.
         /// </summary>
-        internal static string UseRegexCheckBox {
+        public static string UseRegexCheckBox {
             get {
                 return ResourceManager.GetString("UseRegexCheckBox", resourceCulture);
             }

@@ -22,113 +22,98 @@
     </ui:FluentWindow.Resources>
 
     <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <!-- 메뉴 -->
-            <RowDefinition Height="Auto" />
-            <!-- 검색/치환 입력 영역 -->
-            <RowDefinition Height="Auto" />
-            <!-- 옵션 체크박스 영역 -->
-            <RowDefinition Height="Auto" />
+        <Grid.ColumnDefinitions>
+            <!-- 왼쪽 컨트롤 패널 -->
+            <ColumnDefinition Width="380" />
             <!-- 간격 -->
-            <RowDefinition Height="16" />
-            <!-- 파일 목록 DataGrid -->
-            <RowDefinition Height="*" />
-            <!-- 간격 -->
-            <RowDefinition Height="16" />
-            <!-- 상태바 및 버튼 -->
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+            <ColumnDefinition Width="16" />
+            <!-- 오른쪽 데이터 그리드 -->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <!-- Menu -->
-        <Menu Grid.Row="0"
-              Margin="0,0,0,8">
-            <MenuItem Header="Help">
-                <MenuItem Header="{x:Static res:Strings.AboutTitle}"
-                          Click="OnAboutClick">
-                    <MenuItem.Icon>
-                        <ui:SymbolIcon Symbol="Info24" />
-                    </MenuItem.Icon>
-                </MenuItem>
-            </MenuItem>
-        </Menu>
-
-        <!-- 프리셋 및 검색/치환 입력 영역 -->
-        <Grid Grid.Row="1">
+        <!-- 왼쪽 컨트롤 패널 -->
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
+                <!-- 프리셋 영역 -->
                 <RowDefinition Height="Auto" />
+                <!-- 간격 -->
+                <RowDefinition Height="12" />
+                <!-- 검색 -->
+                <RowDefinition Height="Auto" />
+                <!-- 간격 -->
                 <RowDefinition Height="8" />
+                <!-- 치환 -->
+                <RowDefinition Height="Auto" />
+                <!-- 간격 -->
+                <RowDefinition Height="12" />
+                <!-- 옵션 -->
+                <RowDefinition Height="Auto" />
+                <!-- 간격 -->
+                <RowDefinition Height="12" />
+                <!-- 정규식 도움말 -->
+                <RowDefinition Height="Auto" />
+                <!-- 간격 -->
+                <RowDefinition Height="*" />
+                <!-- 하단 아이콘 버튼 -->
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!-- 프리셋 영역 -->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="200" />
-                    <ColumnDefinition Width="8" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="{x:Static res:Strings.PresetLabel}"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,8" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0"
-                           Text="{x:Static res:Strings.PresetLabel}"
-                           VerticalAlignment="Center"
-                           Margin="0,0,8,0" />
+                    <ComboBox Grid.Column="0"
+                              ItemsSource="{Binding Presets}"
+                              SelectedItem="{Binding SelectedPreset}"
+                              DisplayMemberPath="Name">
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ComboBox.ItemContainerStyle>
+                    </ComboBox>
 
-                <ComboBox Grid.Column="1"
-                          ItemsSource="{Binding Presets}"
-                          SelectedItem="{Binding SelectedPreset}"
-                          DisplayMemberPath="Name">
-                    <ComboBox.ItemContainerStyle>
-                        <Style TargetType="ComboBoxItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </ComboBox.ItemContainerStyle>
-                </ComboBox>
+                    <ui:Button Grid.Column="2"
+                               Icon="{ui:SymbolIcon Save24}"
+                               Appearance="Secondary"
+                               ToolTip="{x:Static res:Strings.SavePresetButton}"
+                               Click="OnSavePresetClick" />
 
-                <ui:Button Grid.Column="3"
-                           Content="{x:Static res:Strings.SavePresetButton}"
-                           Icon="{ui:SymbolIcon Save24}"
-                           Appearance="Secondary"
-                           Margin="0,0,8,0"
-                           Click="OnSavePresetClick" />
+                    <ui:Button Grid.Column="4"
+                               Icon="{ui:SymbolIcon Delete24}"
+                               Appearance="Secondary"
+                               ToolTip="{x:Static res:Strings.DeletePresetButton}"
+                               Command="{Binding DeletePresetCommand}"
+                               CommandParameter="{Binding SelectedPreset}" />
+                </Grid>
+            </StackPanel>
 
-                <ui:Button Grid.Column="4"
-                           Content="{x:Static res:Strings.DeletePresetButton}"
-                           Icon="{ui:SymbolIcon Delete24}"
-                           Appearance="Secondary"
-                           Command="{Binding DeletePresetCommand}"
-                           CommandParameter="{Binding SelectedPreset}" />
-            </Grid>
-
-            <!-- 검색/치환 입력 -->
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="16" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Text="{x:Static res:Strings.SearchLabel}"
-                           VerticalAlignment="Center"
-                           Margin="0,0,8,0" />
-
-                <ui:TextBox Grid.Column="1"
-                            PlaceholderText="{x:Static res:Strings.SearchPlaceholder}"
+            <!-- 검색 입력 -->
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="{x:Static res:Strings.SearchLabel}"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,8" />
+                <ui:TextBox PlaceholderText="{x:Static res:Strings.SearchPlaceholder}"
                             ClearButtonEnabled="True"
                             Text="{Binding SearchPattern, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
 
-                <TextBlock Grid.Column="3"
-                           Text="{x:Static res:Strings.ReplaceLabel}"
-                           VerticalAlignment="Center"
-                           Margin="0,0,8,0" />
-
-                <ui:TextBox Grid.Column="4"
-                            PlaceholderText="{x:Static res:Strings.ReplacePlaceholder}"
+            <!-- 치환 입력 -->
+            <StackPanel Grid.Row="4">
+                <TextBlock Text="{x:Static res:Strings.ReplaceLabel}"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,8" />
+                <ui:TextBox PlaceholderText="{x:Static res:Strings.ReplacePlaceholder}"
                             ClearButtonEnabled="True"
                             Text="{Binding ReplacePattern, UpdateSourceTrigger=PropertyChanged}">
                     <ui:TextBox.ToolTip>
@@ -161,91 +146,157 @@
                         </ToolTip>
                     </ui:TextBox.ToolTip>
                 </ui:TextBox>
-            </Grid>
-        </Grid>
+            </StackPanel>
 
-        <!-- 옵션 체크박스 영역 -->
-        <Grid Grid.Row="2"
-              Margin="0,12,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <StackPanel Grid.Row="0"
-                        Orientation="Horizontal">
+            <!-- 옵션 -->
+            <StackPanel Grid.Row="6">
+                <TextBlock Text="{x:Static res:Strings.OptionsLabel}"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,8" />
                 <CheckBox Content="{x:Static res:Strings.UseRegexCheckBox}"
-                          Margin="0,0,16,0"
+                          Margin="0,0,0,8"
                           IsChecked="{Binding UseRegex}" />
                 <CheckBox Content="{x:Static res:Strings.CaseSensitiveCheckBox}"
-                          Margin="0,0,16,0"
+                          Margin="0,0,0,8"
                           IsChecked="{Binding CaseSensitive}" />
-                <ComboBox Width="150"
-                          Margin="0,0,16,0"
-                          SelectedIndex="{Binding CaseTransformIndex}">
+                <TextBlock Text="{x:Static res:Strings.CaseTransformLabel}"
+                           Margin="0,0,0,8" />
+                <ComboBox SelectedIndex="{Binding CaseTransformIndex}">
                     <ComboBoxItem Content="{x:Static res:Strings.CaseNone}" />
                     <ComboBoxItem Content="{x:Static res:Strings.CaseLower}" />
                     <ComboBoxItem Content="{x:Static res:Strings.CaseUpper}" />
                     <ComboBoxItem Content="{x:Static res:Strings.CaseTitle}" />
                 </ComboBox>
+
+                <!-- 정규식 오류 메시지 -->
+                <ui:InfoBar Margin="0,12,0,0"
+                            Severity="Error"
+                            IsOpen="{Binding RegexError, Converter={StaticResource NullToBoolConverter}}"
+                            Message="{Binding RegexError}"
+                            IsClosable="False" />
             </StackPanel>
 
-            <!-- 정규식 오류 메시지 -->
-            <ui:InfoBar Grid.Row="1"
-                        Margin="0,8,0,0"
-                        Severity="Error"
-                        IsOpen="{Binding RegexError, Converter={StaticResource NullToBoolConverter}}"
-                        Message="{Binding RegexError}"
-                        IsClosable="False" />
+            <!-- 정규식 도움말 (Expander) -->
+            <Expander Grid.Row="8"
+                      Header="정규식 도움말"
+                      IsExpanded="False">
+                <ScrollViewer MaxHeight="300"
+                              VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="8">
+                        <TextBlock FontWeight="SemiBold" Margin="0,0,0,4">기본 패턴:</TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,8">
+                            <Run>.</Run> - 임의의 한 문자<LineBreak />
+                            <Run>*</Run> - 0회 이상 반복<LineBreak />
+                            <Run>+</Run> - 1회 이상 반복<LineBreak />
+                            <Run>?</Run> - 0회 또는 1회<LineBreak />
+                            <Run>^</Run> - 문자열 시작<LineBreak />
+                            <Run>$</Run> - 문자열 끝
+                        </TextBlock>
+
+                        <TextBlock FontWeight="SemiBold" Margin="0,0,0,4">문자 클래스:</TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,8">
+                            <Run>[abc]</Run> - a, b, c 중 하나<LineBreak />
+                            <Run>[^abc]</Run> - a, b, c가 아닌 문자<LineBreak />
+                            <Run>[a-z]</Run> - a부터 z까지<LineBreak />
+                            <Run>\d</Run> - 숫자 [0-9]<LineBreak />
+                            <Run>\w</Run> - 단어 문자 [a-zA-Z0-9_]<LineBreak />
+                            <Run>\s</Run> - 공백 문자
+                        </TextBlock>
+
+                        <TextBlock FontWeight="SemiBold" Margin="0,0,0,4">그룹 및 치환:</TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,8">
+                            <Run>(pattern)</Run> - 캡처 그룹<LineBreak />
+                            <Run>$1, $2...</Run> - 치환 시 그룹 참조<LineBreak />
+                            <LineBreak />
+                            <Run FontWeight="SemiBold">예시:</Run><LineBreak />
+                            검색: <Run>(\d+)_(.+)</Run><LineBreak />
+                            치환: <Run>$2_$1</Run><LineBreak />
+                            123_file.txt → file_123.txt
+                        </TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </Expander>
+
+            <!-- 하단 아이콘 버튼 (설정, 정보) -->
+            <StackPanel Grid.Row="10"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Margin="0,8,0,0">
+                <ui:Button Icon="{ui:SymbolIcon Settings24}"
+                           Appearance="Secondary"
+                           Margin="0,0,8,0"
+                           ToolTip="설정"
+                           IsEnabled="False" />
+                <ui:Button Icon="{ui:SymbolIcon Info24}"
+                           Appearance="Secondary"
+                           ToolTip="{x:Static res:Strings.AboutTitle}"
+                           Click="OnAboutClick" />
+            </StackPanel>
         </Grid>
 
-        <!-- 파일 목록 DataGrid -->
-        <Border Grid.Row="4"
-                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
-                BorderThickness="1"
-                CornerRadius="8"
-                AllowDrop="True"
-                DragEnter="OnDragEnter"
-                Drop="OnDrop">
-            <DataGrid AutoGenerateColumns="False"
-                      CanUserAddRows="False"
-                      CanUserDeleteRows="False"
-                      CanUserResizeRows="False"
-                      HeadersVisibility="Column"
-                      GridLinesVisibility="Horizontal"
-                      SelectionMode="Extended"
-                      BorderThickness="0"
-                      ItemsSource="{Binding Items}">
-                <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Header="☑"
-                                            Width="60"
-                                            Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
-                    <DataGridTextColumn Header="{x:Static res:Strings.ColumnOriginalName}"
-                                        Width="2*"
-                                        Binding="{Binding OriginalName}"
-                                        IsReadOnly="True" />
-                    <DataGridTextColumn Header="{x:Static res:Strings.ColumnNewName}"
-                                        Width="2*"
-                                        Binding="{Binding NewName}"
-                                        IsReadOnly="True" />
-                    <DataGridTextColumn Header="📁"
-                                        Width="3*"
-                                        Binding="{Binding OriginalPath}"
-                                        IsReadOnly="True" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </Border>
-
-        <!-- 상태바 및 버튼 -->
-        <Grid Grid.Row="6">
+        <!-- 오른쪽 데이터 그리드 패널 -->
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
+                <!-- 파일 목록 레이블 -->
                 <RowDefinition Height="Auto" />
+                <!-- 간격 -->
+                <RowDefinition Height="8" />
+                <!-- DataGrid -->
+                <RowDefinition Height="*" />
+                <!-- 간격 -->
+                <RowDefinition Height="12" />
+                <!-- 진행률 -->
+                <RowDefinition Height="Auto" />
+                <!-- 간격 -->
+                <RowDefinition Height="8" />
+                <!-- 상태바 및 버튼 -->
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
+            <!-- 파일 목록 레이블 -->
+            <TextBlock Grid.Row="0"
+                       Text="{x:Static res:Strings.FileListLabel}"
+                       FontWeight="SemiBold" />
+
+            <!-- 파일 목록 DataGrid -->
+            <Border Grid.Row="2"
+                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    AllowDrop="True"
+                    DragEnter="OnDragEnter"
+                    Drop="OnDrop">
+                <DataGrid AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserResizeRows="False"
+                          HeadersVisibility="Column"
+                          GridLinesVisibility="Horizontal"
+                          SelectionMode="Extended"
+                          BorderThickness="0"
+                          ItemsSource="{Binding Items}">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="☑"
+                                                Width="60"
+                                                Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
+                        <DataGridTextColumn Header="{x:Static res:Strings.ColumnOriginalName}"
+                                            Width="2*"
+                                            Binding="{Binding OriginalName}"
+                                            IsReadOnly="True" />
+                        <DataGridTextColumn Header="{x:Static res:Strings.ColumnNewName}"
+                                            Width="2*"
+                                            Binding="{Binding NewName}"
+                                            IsReadOnly="True" />
+                        <DataGridTextColumn Header="📁"
+                                            Width="3*"
+                                            Binding="{Binding OriginalPath}"
+                                            IsReadOnly="True" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+
             <!-- 진행률 표시 -->
-            <Grid Grid.Row="0"
-                  Margin="0,0,0,8"
+            <Grid Grid.Row="4"
                   Visibility="{Binding IsProcessing, Converter={StaticResource BoolToVisibilityConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -266,7 +317,7 @@
             </Grid>
 
             <!-- 상태바 및 버튼 -->
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
