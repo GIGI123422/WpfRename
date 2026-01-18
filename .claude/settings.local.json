@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(dir /S /B \"c:\\\\Project\\\\create_by_ai\\\\WpfRename\\\\src\\\\WpfRename\")",
+      "Bash(findstr:*)",
+      "Bash(dotnet build:*)",
+      "Bash(dotnet add package:*)"
+    ]
+  }
+}
